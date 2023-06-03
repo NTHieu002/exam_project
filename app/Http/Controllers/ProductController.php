@@ -154,11 +154,11 @@ class ProductController extends Controller
      */
     public function list_product(Request $request)
     {
-        $min = $request->min;
-        $max = $request->max;
-        $validator = Validator::make([$min, $max], [
-            'min' => 'required', 'max' => 'required'
-        ]);
+        
+        $validator = Validator::make($request->all(),
+           [ 'min' => 'required', 
+            'max' => 'required']
+        );
         if($validator->fails()){
             $arr = [
               'success' => false,
@@ -167,6 +167,8 @@ class ProductController extends Controller
             ];
             return response()->json($arr, 200);
         }
+        $min = $request->min;
+        $max = $request->max;
         $products = DB::table('tbl_products')->where('product_price', '>=', $min)->where('product_price', '<=', $max)->get();
         $arr = [
             'status' => true,
