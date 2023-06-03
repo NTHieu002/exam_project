@@ -148,7 +148,7 @@ class ProductController extends Controller
 
 
     /**
-     * list Product
+     * list Product with price range
      *
      * @return response()
      */

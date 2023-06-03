@@ -23,9 +23,9 @@ Route::get('/home', function () {
     return view('layout');
 });
 
-Route::get('login', [UserController::class, 'index'])->name('login');
+Route::get('/admin/login', [UserController::class, 'index'])->name('login');
 Route::post('post-login', [UserController::class, 'postLogin'])->name('login.post'); 
-Route::get('registration', [UserController::class, 'registration'])->name('register');
+Route::get('/admin/registration', [UserController::class, 'registration'])->name('register');
 Route::post('post-registration', [UserController::class, 'postRegistration'])->name('register.post'); 
 Route::get('dashboard', [UserController::class, 'dashboard']); 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
